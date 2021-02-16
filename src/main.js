@@ -16,7 +16,7 @@ export default async function main() {
     })
     .option('headers', {
       type: 'string',
-      describe: 'HTTP headers path',
+      describe: 'HTTP headers path (JSON)',
     })
     .option('all', {
       alias: 'a',
