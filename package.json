@@ -3,6 +3,7 @@
   "author": "Connor Mann",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.21.1",
     "esm": "^3.2.25",
     "yargs": "^16.2.0"
   },
