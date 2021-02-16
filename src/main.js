@@ -18,6 +18,12 @@ export default async function main() {
       type: 'string',
       describe: 'HTTP headers path',
     })
+    .option('all', {
+      alias: 'a',
+      type: 'boolean',
+      describe:
+        'Output response data and metadata as JS object (only data is printed by default)',
+    })
     .demandCommand(
       1,
       1,
@@ -27,7 +33,9 @@ export default async function main() {
     .usage('$0 [options...] <url>')
     .version(false)
     .strict();
-  const { query, variables, headers } = argv;
+  const {
+    query, variables, headers, all,
+  } = argv;
   const url = argv._[0];
 
   const data = {};
@@ -54,5 +62,5 @@ export default async function main() {
     }
   }
 
-  await request(url, data, config);
+  await request(url, data, config, all);
 }
