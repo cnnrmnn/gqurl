@@ -30,7 +30,8 @@ export default async function main() {
   const { query, variables, headers } = argv;
   const url = argv._[0];
 
-  const data = { query };
+  const data = {};
+  data.query = await readFromFile(query);
   if (variables) {
     try {
       const variablesJSON = await readFromFile(variables);
