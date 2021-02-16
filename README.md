@@ -4,7 +4,7 @@
 
 ## Usage
 ```
-gqurl [--query <path>] [--variables <path>] [--headers <path>] <url>
+gqurl --query <path> [--variables <path>] [--headers <path>] [--all | -a] <url>
 ```
 
 ## Acknowledgement
