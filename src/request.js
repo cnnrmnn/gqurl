@@ -3,8 +3,8 @@ import axios from 'axios';
 export default async function request(url, data, config) {
   try {
     const response = await axios.post(url, data, config);
-    console.dir(response.data, { depth: null });
+    console.log(JSON.stringify(response.data, null, 2));
   } catch (error) {
-    console.dir(error.response.data, { depth: null });
+    console.error(JSON.stringify(error.response.data, null, 2));
   }
 }
