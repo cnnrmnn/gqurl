@@ -3,7 +3,8 @@
   "author": "Connor Mann",
   "license": "MIT",
   "dependencies": {
-    "esm": "^3.2.25"
+    "esm": "^3.2.25",
+    "yargs": "^16.2.0"
   },
   "devDependencies": {
     "eslint": "^7.20.0",
