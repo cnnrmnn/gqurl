@@ -8,4 +8,4 @@ gqurl --query <path> [--variables <path>] [--headers <path>] [--all | -a] <url>
 ```
 
 ## Acknowledgement
-Hasura maintains a much more powerful GraphQL CLI called [graphqurl](https://github.com/hasura/graphqurl). The main reason that I built **gqurl** is that graphqurl doesn't allow you to load queries from files. **gqurl** provides this missing functionality. 
+Hasura maintains a much more powerful GraphQL CLI called [graphqurl](https://github.com/hasura/graphqurl).
