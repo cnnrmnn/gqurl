@@ -22,8 +22,7 @@ export default async function main() {
     .option('all', {
       alias: 'a',
       type: 'boolean',
-      describe:
-        'Output response data and metadata as JS object (only data is printed by default)',
+      describe: 'Prepend response metadata JS object to output',
     })
     .usage('$0 [options...] <query-path> <url>')
     .version(false)
