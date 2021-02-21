@@ -12,10 +12,12 @@ export default async function main() {
     .option('variables', {
       type: 'string',
       describe: 'GraphQL variables path (JSON)',
+      requiresArg: true,
     })
     .option('headers', {
       type: 'string',
       describe: 'HTTP headers path (JSON)',
+      requiresArg: true,
     })
     .option('all', {
       alias: 'a',
@@ -26,30 +28,34 @@ export default async function main() {
     .usage('$0 [options...] <query-path> <url>')
     .version(false)
     .strict();
-  console.log(argv);
+
   const {
-    all, headers, query, url, variables,
+    all,
+    url,
+    queryPath,
+    headers: headersPath,
+    variables: variablesPath,
   } = argv;
 
   const data = {};
-  data.query = await readFromFile(query);
-  if (variables) {
+  data.query = await readFromFile(queryPath);
+  if (variablesPath) {
     try {
-      const variablesJSON = await readFromFile(variables);
+      const variablesJSON = await readFromFile(variablesPath);
       data.variables = JSON.parse(variablesJSON);
     } catch (error) {
-      console.error(`Failed to parse JSON from file at path ${variables}.`);
+      console.error(`Failed to parse JSON from file at path ${variablesPath}.`);
       console.error(error);
       process.exit(1);
     }
   }
   const config = {};
-  if (headers) {
+  if (headersPath) {
     try {
-      const headersJSON = await readFromFile(headers);
+      const headersJSON = await readFromFile(headersPath);
       config.headers = JSON.parse(headersJSON);
     } catch (error) {
-      console.error(`Failed to parse JSON from file at path ${headers}.`);
+      console.error(`Failed to parse JSON from file at path ${headersPath}.`);
       console.error(error);
       process.exit(1);
     }
