@@ -5,11 +5,10 @@ import request from './request';
 
 export default async function main() {
   const { argv } = yargs(hideBin(process.argv))
-    .option('query', {
-      type: 'string',
-      describe: 'GraphQL query path',
-      demandOption: true,
-    })
+    .command(
+      '$0 <query-path> <url>',
+      'Send HTTP post request with GraphQL query at <query-path>',
+    )
     .option('variables', {
       type: 'string',
       describe: 'GraphQL variables path (JSON)',
@@ -24,19 +23,13 @@ export default async function main() {
       describe:
         'Output response data and metadata as JS object (only data is printed by default)',
     })
-    .demandCommand(
-      1,
-      1,
-      'Missing required argument: <url>',
-      'Too many arguments',
-    )
-    .usage('$0 [options...] <url>')
+    .usage('$0 [options...] <query-path> <url>')
     .version(false)
     .strict();
+  console.log(argv);
   const {
-    query, variables, headers, all,
+    all, headers, query, url, variables,
   } = argv;
-  const url = argv._[0];
 
   const data = {};
   data.query = await readFromFile(query);
